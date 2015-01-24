@@ -1,12 +1,16 @@
 package com.example.karuran.myfirstapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    public final static String EXTRA_MESSAGE = "com.example.karuran.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +19,11 @@ public class MainActivity extends ActionBarActivity {
     }
     
     public void sendMessage(View view) {
-        
-        
+        Intent intent =  new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText)findViewById(R.id.edit_message);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 
 
